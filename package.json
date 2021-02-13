@@ -1,0 +1,29 @@
+{
+  "name": "babel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "compiler:plugin": "babel './src/main.js' --out-dir dist --plugins=@babel/plugin-transform-arrow-functions",
+    "compiler:preset": "babel './src/main.js' --out-dir dist --presets=@babel/preset-env",
+    "compiler": "babel './src/main.js' --out-dir dist",
+    "polyfill": "NODE_ENV=polyfill babel src --out-dir polyfill",
+    "runtime": "NODE_ENV=runtime babel src --out-dir runtime",
+    "runtime-corejs2": "NODE_ENV=core2 babel src --out-dir runtime-corejs2 --no-babelrc",
+    "runtime-corejs3": "NODE_ENV=core3 babel src --out-dir runtime-corejs3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-arrow-functions": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "babel-plugin-transform-node-env-inline": "^0.4.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime-corejs3": "^7.12.5",
+    "core-js": "3"
+  }
+}

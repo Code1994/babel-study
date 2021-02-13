@@ -1,0 +1,31 @@
+{
+  "plugins": [
+    "@babel/plugin-transform-arrow-functions"
+    // ③ 解决polyfill在每个文件中重复引入的问题。
+    // [
+    //   // 优先级高于polyfill
+    //   "@babel/plugin-transform-runtime", 
+    //   {
+    //     // 如果想要转译如promise等新兴api 仍然需要@babel/polyfill。（其实core-js就是polyfill的核心功能）
+    //     // !!!声明下项 并安装同版本的@babel/runtime-corejs3
+    //     // 另外 corejs2不能转译 includes 一般使用corejs3就可以
+    //     "corejs": 2
+    //   }
+    // ]
+  ],
+  "presets": [
+    [
+      "@babel/env", {
+        // "targets": {
+        //   "chrome": 87,
+        //   "safari": 11.1
+        // },
+        // ②
+        // "useBuiltIns": "usage",
+        // 使用useBuiltIns时 需要声明core-js的版本 2或者3 另外core-js可以随着@babel/polyfill的安装而安装 
+        // 由于上项与@babel/polyfill冲突 所以我们需要手动安装core-js。另外要注意安装的版本要与下项设置一致。否则转译的代码无法正常运行。
+        // "corejs": 3
+      }
+    ]
+  ]
+}
